@@ -27,7 +27,6 @@ Route::apiResource("forecasts", ForecastController::class);
 
 Route::prefix("forecastsByCity/{cityName}")->group(function () {
 
-    
     Route::get("/", [ForecastByCityAndDateController::class, "index"]);
     Route::get("{date}", [ForecastByCityAndDateController::class, "show"]);
     Route::delete("{date}", [ForecastByCityAndDateController::class, "destroy"]);
