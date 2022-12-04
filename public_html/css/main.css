@@ -1,0 +1,145 @@
+body {
+	margin: 0;
+}
+html{
+	height: 100%;
+	width: 100%;
+	font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+
+}
+
+#links{
+	float: right;
+	padding-top: 15px;
+	padding-right: 30px;
+}
+.city{
+	display: inline-block;
+	background: rgba(217, 217, 217, 1);
+	border-radius: 5px;        
+	height: 30px;
+
+	padding-top: 8px;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	font-family: 'Inter', sans-serif;
+	font-size: clamp(12px, 1.2vw,  1.2vw);	
+}
+
+
+
+#links a:hover{
+	border: 1px solid white;
+	background-color: #F5F6FA;
+}
+#links a:hover, #links a.active {
+	border: 1px solid white;
+	background-color: #F5F6FA;
+	box-shadow: 0 3px 0 #82909b;
+}
+nav{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	text-shadow: 
+        -1px -1px 0 rgb(112, 112, 112), 
+        1px -1px 0 rgb(104, 104, 104), 
+        -1px 1px 0 rgb(105, 105, 105), 
+        1px 1px 0 rgb(129, 129, 129),
+        0px 4px 4px rgba(0, 0, 0, 0.25), 
+        0px 4px 4px rgba(0, 0, 0, 0.25), 
+        0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+#center-elem_1{
+	font-size: 150px;
+}
+
+#center-elem_1 p {
+	margin-top: 70px;
+	margin-bottom: 130px;
+}
+
+#center-elem_2{
+	line-height: 0px;
+}
+
+@media (min-width: 1300px) {
+	.city {
+		width: 190px;
+		border-radius: 30px;   
+	}
+
+
+
+}
+
+
+
+.city_Moscow{
+	font-size: 81px;
+}
+.data{
+	font-size: 25px;
+}
+section{
+	width: 100%;
+	
+	background-color: rgba(22, 22, 22, 0.19);
+}
+#blocks{
+	padding-top:74px;
+	display: flex;
+	justify-content: space-around;
+}
+article{
+	margin: 10px;
+	max-width: 250px;
+	width: 9999px;
+	border-radius: 10%;
+	border: 1px solid rgba(217, 217, 217, 0.67);
+	height: 250px;
+	background-color: rgba(217, 217, 217, 0.67);
+	
+}
+.symbols{
+	max-width: 50px;
+	float: left;
+}
+.label{
+	text-align: center;
+	font-size: 23px;
+}
+.line{
+	border-bottom: 1px solid black;
+}
+#lastblocks{
+	display: flex;
+	justify-content: space-around;
+	padding-top: 60px;
+}
+.lastlinks{
+	color: rgba(255, 255, 255, 1);
+	font-size: 40px;
+	text-decoration: none;
+	-webkit-text-stroke: 0.5px #000000;
+	margin-bottom: 50px;
+}
+footer{
+	/* border: 1px solid black; */
+	width: 100%;
+	background-color: black;
+	margin: 0 auto;
+}
+
+.infobox {
+	text-align: center;
+	margin-top: 60px;
+	font-size: calc(20px + 2vw);
+}

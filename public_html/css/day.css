@@ -1,0 +1,175 @@
+
+html {
+    height: 100%;
+}
+
+
+body {
+    
+    font-size: clamp(1.2rem, 2vw, 2rem);
+
+    box-sizing: border-box;
+    min-height: 100%;
+    padding: 2%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    margin: 0;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    color: white;
+    text-shadow: 
+        -1px -1px 0 rgb(112, 112, 112), 
+        1px -1px 0 rgb(104, 104, 104), 
+        -1px 1px 0 rgb(105, 105, 105), 
+        1px 1px 0 rgb(129, 129, 129);
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo-img {
+    width: 100%;
+}
+
+.logo {
+    width: 15vw;
+    margin-left: 4vw;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-box {
+    flex-direction: column;
+}
+
+.title-row {
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.title-box p {
+
+    text-shadow: 
+        -1px -1px 0 rgb(112, 112, 112), 
+        1px -1px 0 rgb(104, 104, 104), 
+        -1px 1px 0 rgb(105, 105, 105), 
+        1px 1px 0 rgb(129, 129, 129),
+        0px 4px 4px rgba(0, 0, 0, 0.25), 
+        0px 4px 4px rgba(0, 0, 0, 0.25), 
+        0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+p {
+    margin: 0
+}
+
+.p-city {
+    font-size: 2.5em;
+}
+
+.p-date {
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.forecast-row.grid {
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 0fr 8fr;
+    column-gap: 5vw;
+}
+
+
+.time-box-img {
+   
+}
+
+.time-box-label {
+    font-size: 1.6em;
+}
+
+
+.forecast-items-row {
+    justify-content: space-around;
+    height: 140px;
+}
+
+.hour-item {
+    flex-direction: column;
+}
+
+.item-icon {
+    width: 4rem;
+}
+
+.hour-item {
+    font-size: 1em;
+}
+
+.buttons-row {
+    justify-content: end;
+    padding: 10px;
+}
+
+.nav-button {
+    width: 5rem;
+}   
+
+
+
+
+
+/* широкий */
+@media (min-width: 799px) {
+
+
+    .hidden-at-high-res {
+        display: none;
+    }
+
+    .hidden-at-low-res {
+        display: flex;
+    }
+
+}
+
+/* высокий */
+@media (max-width: 800px) {
+
+    .hidden-at-high-res {
+        display: flex;
+    }
+
+    .hidden-at-low-res {
+        display: none;
+    }
+
+    .time-box {
+        grid-row: span 2;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .title-row {
+        justify-content: center;
+    }
+
+}

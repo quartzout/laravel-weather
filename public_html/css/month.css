@@ -1,0 +1,143 @@
+body{
+    position: relative;
+    max-width: 1366px;
+    max-height: 1197px;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.body{
+    position: relative; 
+    max-width: 1366px;
+    max-height: 1197px;
+    background: rgba(40, 40, 40, 1);
+    opacity: 0.7;
+
+}
+
+.body_2{
+    position: relative; 
+    height: 820px;
+    left: 43px;
+    top: 30px;
+    background: rgba(217, 217, 217, 0.30);
+    
+}
+
+.logo-header{
+    position: absolute;
+    width: 10vw;
+    top: 60px;
+    left: 100px;
+ 
+}
+
+.text-header{
+    
+    text-align: center;
+    font-size: 80px;
+    
+    color: #FFFFFF;
+    
+}
+
+.text-header_2{
+
+    text-align: center;
+    font-size: 40px;
+    line-height: 48px;
+    color: #FFFFFF;
+   
+}
+
+.table{
+    margin-top: -620px;
+    
+    margin-left: 10vw;
+}
+
+.tr_1{
+    display: flex;
+    justify-content: center;
+    margin-top: -35px;
+    color: rgb(0, 0, 0);
+    font-size: 27px;
+    margin-left: 0px;
+    margin-top: 10px;
+}
+
+.image_buttons{
+    margin: 10px;
+
+}
+
+
+.image{
+    display: flex;
+    justify-content:center;
+}
+
+.img__wrap {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    position: relative;
+    height: 50px;
+    width: 50px;
+}
+
+.img__description {
+    position: absolute;
+    height: 130px;
+    width: 150px;
+    top: 0.011;
+    bottom: -0;
+    left: -1;
+    right: -1;
+    background: rgb(255, 174, 194);
+    color: rgb(0, 0, 0);
+    font-size: 17px;
+    visibility: hidden;
+    opacity:-2;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    padding: 10px;
+
+    transition: opacity .2s, visibility .2s;
+    }
+
+.img__wrap:hover .img__description {
+    visibility: visible;
+    opacity: 1;
+}
+
+.img__img {
+    width: 4rem;
+}
+
+.footer {
+    margin-top: 50px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 50px;
+}
+
+.header-row {
+    display: flex;
+    justify-content: center;
+}
+
+.header-block {
+    margin-top: -800px;
+    text-shadow: 
+        -1px -1px 0 rgb(0, 0, 0), 
+        1px -1px 0 rgb(0, 0, 0), 
+        -1px 1px 0 rgb(0, 0, 0), 
+        1px 1px 0 rgb(0, 0, 0),
+        0px 4px 4px rgba(0, 0, 0, 0.25), 
+        0px 4px 4px rgba(0, 0, 0, 0.25), 
+        0px 4px 4px rgba(0, 0, 0, 0.25);
+}
