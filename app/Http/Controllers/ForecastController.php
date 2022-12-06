@@ -61,7 +61,7 @@ class ForecastController extends Controller
         ]);
 
         $forecast = Forecast::create($request->all());
-        return response($forecast);
+        return $forecast;
         
     }
 
@@ -79,13 +79,13 @@ class ForecastController extends Controller
         $forecast = Forecast::findOrFail($id);
 
         $request->validate([
-            "city_id" => 'required|exists:cities,id',
+            "city_id" => 'exists:cities,id',
             "date" => 'date'
         ]);
 
         $forecast->update($request->all());
         $forecast->save();
-        return response($forecast);
+        return $forecast;
      
     }
 }

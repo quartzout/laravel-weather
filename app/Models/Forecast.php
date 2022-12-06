@@ -12,7 +12,7 @@ class Forecast extends Model
 
 
     protected $hidden = ['created_at', 'updated_at'];
-    protected $fillable = ["city_id", "date", "info"];
+    protected $guarded = [];
 
 
 
