@@ -41,9 +41,7 @@ class ForecastController extends Controller
      */
     public function destroy(int $id)
     {
-        Forecast::findOrFail($id);
-        Forecast::destroy($id);
-        return response("");
+        return response(status: 204);
     }
 
 

@@ -56,6 +56,6 @@ class ForecastByCityAndDateController extends Controller
             ->firstOrFail();
         
         Forecast::destroy($forecast->id);
-        return response("");
+        return response(status: 204);
     }
 }
