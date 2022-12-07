@@ -38,13 +38,30 @@ class ForecastController extends Controller
 
     public function store(StoreForecastRequest $request)
     {
-        $request->validate([
-            "city_id" => 'required|exists:cities,id',
-            "date" => 'date'
-        ]);
 
-        $forecast = Forecast::create($request->all());
-        return $forecast;
+        //Find city by provided id
+        $city = City::find($request->safe()->only("city_id"))->first();
+
+        //create forecast and associate it with city
+        $forecast = new Forecast($request->safe()->except(["hour_forecasts"]));
+        $city->forecasts()->save($forecast);
+    
+        //create 24 hour forecasts using provided hour_forecast attribute
+        $hourForecasts = collect()->range(0, 23)->map(function ($hour) use($request, $forecast) {
+
+            $values = $request->safe()->collect()->get("hour_forecasts")[$hour];
+
+            $hour_forecast = new HourForecast($values);
+            $hour_forecast->hour = $hour;
+            return $hour_forecast;
+        });
+
+
+        $forecast->hourForecasts()->saveMany($hourForecasts);
+
+        $forecastWithRelations = $forecast->load('hourForecasts');
+
+        return $forecastWithRelations;
         
     }
 
@@ -52,17 +69,21 @@ class ForecastController extends Controller
     public function update(UpdateForecastRequest $request, Forecast $forecast)
     {
     
-
-        $forecast = Forecast::findOrFail($id);
-
-        $request->validate([
-            "city_id" => 'exists:cities,id',
-            "date" => 'date'
-        ]);
-
-        $forecast->update($request->all());
+        //update forecast 
+        $forecast->update($request->safe()->except(["hour_forecasts"]));
         $forecast->save();
-        return $forecast;
+
+
+        //update hour forecasts (if given)
+        if ($request->safe()->collect()->has("hour_forecasts"))
+            foreach ($request->safe()->collect()->get("hour_forecasts") as $hour_forecast_data) {
+                $hourForecast = HourForecast::whereBelongsTo($forecast)->where('hour', $hour_forecast_data["hour"])->first();
+                $hourForecast->update($hour_forecast_data);
+                $hourForecast->save();
+            }
+
+        $forecastWithRelations =  $forecast->load('hourForecasts');
+        return $forecastWithRelations;
      
     }
 }
