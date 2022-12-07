@@ -20,11 +20,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource("forecasts", ForecastController::class);
 
-Route::prefix("forecasts-by-city-date/{cityName}")->group(function () {
+Route::prefix("forecasts-by-city-date/{city:name}")->group(function () {
 
     Route::get("/", [ForecastByCityAndDateController::class, "index"])->name("forecasts-by-city-name.index");
-    Route::get("{date}", [ForecastByCityAndDateController::class, "show"])->name("forecasts-by-city-name.show");
-    Route::delete("{date}", [ForecastByCityAndDateController::class, "destroy"])->name("forecasts-by-city-name.destroy");
+    Route::get("{forecast:date}", [ForecastByCityAndDateController::class, "show"])->name("forecasts-by-city-name.show");
+    Route::delete("{forecast:date}", [ForecastByCityAndDateController::class, "destroy"])->name("forecasts-by-city-name.destroy");
 
 });
 

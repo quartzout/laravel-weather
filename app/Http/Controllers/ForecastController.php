@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreForecastRequest;
+use App\Http\Requests\UpdateForecastRequest;
 use App\Models\City;
 use App\Models\Forecast;
+use App\Models\HourForecast;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ForecastController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $forecasts = Forecast::with('hourForecasts')->get();
@@ -20,38 +20,23 @@ class ForecastController extends Controller
         return response($forecasts);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Forecast  $forecast
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request, int $id)
+
+    public function show(Forecast $forecast)
     {
-        $forecast = Forecast::with('hourForecasts')->findOrFail($id);
         return response($forecast);
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Forecast  $forecast
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(int $id)
+
+    public function destroy(Forecast $forecast)
     {
+        $forecast->delete();
         return response(status: 204);
     }
 
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store(StoreForecastRequest $request)
     {
         $request->validate([
             "city_id" => 'required|exists:cities,id',
@@ -63,14 +48,8 @@ class ForecastController extends Controller
         
     }
 
-     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Forecast  $forecast
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, int $id)
+
+    public function update(UpdateForecastRequest $request, Forecast $forecast)
     {
     
 
