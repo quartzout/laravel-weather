@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class ForecastByIdTest extends TestCase
+class ForecastControllerTest extends TestCase
 {
 
     use RefreshDatabase;
@@ -50,47 +50,6 @@ class ForecastByIdTest extends TestCase
         $response->assertSuccessful();
 
         $this->assertDatabaseMissing("forecasts", ["id" => $this->firstForecast->id]);
-    }
-
-
-    public function test_store_forecast() {
-
-        $ForecastDate = Carbon::today()->addDays(7)->format("Y-m-d");
-
-        $this->assertDatabaseMissing("forecasts", ["date" => $ForecastDate, "airPressure" => 800]);
-
-        $model = [
-            "date" => $ForecastDate,
-            "humidityPercent" => 50,
-            "wind" => 10,
-            "airPressure" => 800,
-            "city_id" => City::all()->first()->id
-        ];
-
-        $response = $this->postJson(route("forecasts.index"), $model);
-        $response->assertSuccessful();
-        
-        $this->assertDatabaseHas("forecasts", ["date" => $ForecastDate, "airPressure" => 800]);
-
-    }
-
-    public function test_update_forecast() {
-
-
-        $this->assertDatabaseHas("forecasts", ["id" => $this->firstForecast->id, "airPressure" => 700]);
-
-
-        $response = $this->putJson(
-            route(
-                "forecasts.update", 
-                $this->firstForecast->id
-            ), 
-            ["airPressure" => 800]
-        );
-        $response->assertSuccessful();
-        
-        $this->assertDatabaseHas("forecasts", ["id" => $this->firstForecast->id, "airPressure" => 800]);
-
     }
 
 
